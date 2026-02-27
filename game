@@ -1,0 +1,155 @@
+import random
+
+# Рандомизация карт игроку
+karts = ["туз", "король", "дама", "валет", 10, 9, 8, 7, 6]
+mast = ["черви", "бубен", "пики", "трефы"]
+
+
+class Player:
+    def __init__(self, rukav):
+        self.rukav = []
+
+    def __str__(self):
+        return f'у вас {len(self)} карт'
+
+    def __len__(self):
+        return len(self.rukav)
+
+    def __eq__(self, other)
+        return player_score == other
+
+    def __add__(self, other):
+        self.rukav.append(other)
+        return self
+
+    def __gt__(self, other):
+        return player_score > other
+
+
+
+Player_1 = Player('')
+player_score = 0
+
+
+# def player_score():
+#     if Player_1.rukav
+def random_card():
+    global Player_1
+    for i in range(2):
+        karts_copy = karts.copy()
+        mast_copy = mast.copy()
+
+        rand_card = random.randint(0, 8)
+        kart_player = karts_copy.pop(rand_card)
+
+        rand_mast = random.randint(0, 3)
+        mast_player = mast_copy.pop(rand_mast)
+        all_cards = [kart_player, mast_player]
+        global player_score
+        if kart_player == 'туз':
+            player_score += 11
+            print(player_score)
+        if kart_player == 'король':
+            player_score += 10
+            print(player_score)
+        if kart_player == 'дама':
+            player_score += 10
+            print(player_score)
+        if kart_player == 'валет':
+            player_score += 10
+            print(player_score)
+
+        if kart_player == 10:
+            player_score += 10
+            print(player_score)
+        if kart_player == 9:
+            player_score += 9
+            print(player_score)
+        if kart_player == 8:
+            player_score += 8
+            print(player_score)
+        if kart_player == 7:
+            player_score += 7
+            print(player_score)
+        if kart_player == 6:
+            player_score += 6
+            print(player_score)
+
+        Player_1=Player_1 + all_cards
+
+        print(kart_player, mast_player, end=" ")
+        print(Player_1.rukav)
+        print("\n")
+
+
+def next_card():
+    global Player_1
+    global player_score
+    choice_user = input('Брать ещё 1? y/n:  ')
+    if choice_user == 'y':
+        karts_copy = karts.copy()
+        mast_copy = mast.copy()
+
+        rand_card = random.randint(0, 8)
+        kart_player = karts_copy.pop(rand_card)
+
+        rand_mast = random.randint(0, 3)
+        mast_player = mast_copy.pop(rand_mast)
+        all_cards = [kart_player, mast_player]
+        global player_score
+        if kart_player == 'туз':
+            player_score += 11
+            print(player_score)
+        if kart_player == 'король':
+            player_score += 10
+            print(player_score)
+        if kart_player == 'дама':
+            player_score += 10
+            print(player_score)
+        if kart_player == 'валет':
+            player_score += 10
+            print(player_score)
+        if kart_player == 10:
+            player_score += 10
+            print(player_score)
+        if kart_player == 9:
+            player_score += 9
+            print(player_score)
+        if kart_player == 8:
+            player_score += 8
+            print(player_score)
+        if kart_player == 7:
+            player_score += 7
+            print(player_score)
+        if kart_player == 6:
+            player_score += 6
+            print(player_score)
+        Player_1= Player_1 +all_cards
+        print(Player_1.rukav)
+        return True
+    elif choice_user == 'n':
+        return False
+
+
+def proverka_win_lose():
+    global player_score
+    if Player_1 == 21:
+        print("Победа!")
+        print(Player_1)
+        return True
+    elif Player_1 > 21:
+        print("Проигрыш!")
+        return True
+    else:
+        return False
+random_card()
+while True:
+    if proverka_win_lose():
+        break
+
+    if next_card()==False:
+        print(f"Игра окончена. У вас {len(Player_1)} карт, {player_score} очков")
+        break
+
+    if proverka_win_lose():
+        break
